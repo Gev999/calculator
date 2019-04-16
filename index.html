@@ -5,46 +5,46 @@
     <title></title>
   </head>
   <body>
-    <input type="radio" name="floor" id="1f" value="one-floor" >Одноэтажный дом
-    <input type="radio" name="floor" id="2f" value="two-floor" >Двухэтажный дом<br>
+    <input type="radio" name="floor" id="one-floor" value="one-floor" >Одноэтажный дом
+    <input type="radio" name="floor" id="two-floor" value="two-floor" >Двухэтажный дом<br>
     <div id="two-floor">
       <input type="number"  id="houseSquareMeter" min=1 >к.м. вашего дома<br>
       Высота дома первого этажа:<br>
       <input type="radio" name="height" id="height-2.5"  value="2.5" checked> 2.5 метра
       <input type="radio" name="height" id="height-2.8"  value="2.8"> 2.8 метра<br>
       Крыша из металлочерепицы:<br>
-      <input type="radio" name="roof" id="1" checked> односкатная<br>
-      <input type="radio" name="roof" id="2"> Мансардная(двухскатная)<br>
-      <input type="radio" name="roof" id="3"> полноценный второй этаж 2,5 метра<br>
+      <input type="radio" name="roof" id="roof-1" checked> односкатная<br>
+      <input type="radio" name="roof" id="roof-2"> Мансардная(двухскатная)<br>
+      <input type="radio" name="roof" id="roof-3"> полноценный второй этаж 2,5 метра<br>
       
       Пол первого этажа из <br>
-      <input type="radio" name="panel"  id="174" checked> СИП панели толщиной 174мм <br>
-      <input type="radio" name="panel"  id="224"> СИП панели толщиной 224мм <br>
+      <input type="radio" name="panel"  id="panel-1" checked> СИП панели толщиной 174мм <br>
+      <input type="radio" name="panel"  id="panel-2"> СИП панели толщиной 224мм <br>
 
       Внутренние перегородки дома из <br>
-      <input type="radio" name="pereg"  id="karkas" checked > сип панели каркасные <br>
-      <input type="radio" name="pereg" id="124"> сип панели 124 мм <br>
+      <input type="radio" name="pereg"  id="portition-1" checked > сип панели каркасные <br>
+      <input type="radio" name="pereg" id="portition-2"> сип панели 124 мм <br>
 
       Окна 
-      <input type="number" id="wind" ><br>
+      <input type="number" id="wind" min=1><br>
 
       Внешняя отделка дома <br>
-      <input type="radio" name="otdelka" id="saiding">сайдингом<br>
-      <input type="radio" name="otdelka" id="xaus"> блок Хаусом <br>
-      <input type="radio" name="otdelka" id="kirpich">фасадная плитка под керпич (цвет на выбор) <br><br>
+      <input type="radio" name="otdelka" id="decoration-1">сайдингом<br>
+      <input type="radio" name="otdelka" id="decoration-2"> блок Хаусом <br>
+      <input type="radio" name="otdelka" id="decoration-3">фасадная плитка под керпич (цвет на выбор) <br><br>
 
       <!--vodostochnaya sistema-->
-      <input type="radio" id="vodostochnaya">Водосточная система<br><br>
+      <input type="checkbox" id="drainage-system">Водосточная система<br><br>
 
       Терасса:
-      <input type="number" id="terassa"><br><br>
+      <input type="number" id="terrace" min=1><br><br>
 
       Межэтажное перекрытие <br>
-      <input type="radio" name="perkr"  id="kark" checked > каркасное <br>
-      <input type="radio" name="perkr" id="mejp"> сип панели  <br><br>
+      <input type="radio" name="perkr"  id="frame-beams-1" checked > каркасное <br>
+      <input type="radio" name="perkr" id="frame-beams-2"> сип панели  <br><br>
 
       <!----Снегозадержатели:-->
-      <input type="checkbox">Снегозадержатели<br><br>
+      <input type="checkbox" id="snow-shields">Снегозадержатели<br><br>
       
       <div id="display"><p></p></div>
       <p id="result"></p>
@@ -63,7 +63,8 @@
 
 
     <!-- <script type="text/javascript" src="calculate.js"></script> -->
-    <script src="test.js"></script>
+    <script src="script.js"></script>
+    <script src="twoFloor.js"></script>
 
   </body>
 </html>
