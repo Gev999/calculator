@@ -66,7 +66,10 @@ function twoFloor() {
             roofPrice();
             panelThicknessPrice();
             portitionPrice();
+            decorationPrice();
+            drainingSystemPrice();
             frameBeamsPrice();
+            snowShieldsPrice();
         }
         getFinalPrice();
     }
@@ -241,6 +244,18 @@ function twoFloor() {
         }
         getFinalPrice();
     })
+
+    function decorationPrice() {
+        if (decoration1.checked) {
+            finalPrice.homeDecoration = houseSquareMeter*1500;
+        }
+        else if (decoration2.checked) {
+            finalPrice.homeDecoration = houseSquareMeter*1700;
+        }
+        else if (decoration3.checked) {
+            finalPrice.homeDecoration = houseSquareMeter*4200;
+        }
+    }
     //--------------------------
 
     //Водосточная система (цена)
@@ -253,6 +268,15 @@ function twoFloor() {
         }
         getFinalPrice();
     })
+
+    function drainingSystemPrice() {
+        if (drainageSystem1.checked) {
+            finalPrice.drainageSystem = houseSquareMeter*350;
+        }
+        else {
+            finalPrice.drainageSystem = 0;
+        }
+    }
     //-------------------------
 
     //терраса (цена)
@@ -295,7 +319,7 @@ function twoFloor() {
     //снегозадержатели (цена)
     snowShields1.addEventListener('click', ()=> {
         if (snowShields1.checked) {
-            //code ...
+            finalPrice.snowShields = houseSquareMeter*350;
         }
         else {
             //code ...
@@ -303,6 +327,16 @@ function twoFloor() {
         }
         getFinalPrice();
     })
+
+    function snowShieldsPrice() {
+        if (snowShields1.checked) {
+            finalPrice.snowShields = houseSquareMeter*350;
+        }
+        else {
+            //code ...
+            finalPrice.snowShields = 0;
+        }
+    }
 
     //----------------------
 
