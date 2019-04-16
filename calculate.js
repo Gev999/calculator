@@ -5,40 +5,44 @@
    let f1=document.getElementById("1f");
    let f2=document.getElementById("2f");
    let price;
-   let km=document.getElementById("km").value;
-   let finalPrice=[0,0,0,0,0,0,0,0,0,0,0];
+   let houseSquareMeter=document.getElementById("houseSquareMeter").value;
+   let finalPrice = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+   // const finalPrice2 = {
+   //    height: 0,
+   //    inc: doInc,
+   // }
    let idArr= new Array();
    // f2.onclick=function(){
       
-
+   
       
    // }
    function kvadratmetr(){
      
-      km=document.getElementById("km").value;
-         if(km<=99){price=km*9500}
-         if(km>=100 && km<=130){price=km*9000}
-         if(km>=131){price=km*8500}
+      houseSquareMeter=document.getElementById("houseSquareMeter").value;
+         if(houseSquareMeter<=99){price=houseSquareMeter*9500}
+         if(houseSquareMeter>=100 && houseSquareMeter<=130){price=houseSquareMeter*9000}
+         if(houseSquareMeter>=131){price=houseSquareMeter*8500}
          finalPrice[0]=price;
       arraySum();
          
    }  
    
-   document.getElementById("km").addEventListener( 'keyup',function(){  ///////////////////// KARDA keyup, keydown, keypress tarberutyunnery
+   document.getElementById("houseSquareMeter").addEventListener( 'keyup',function(){  ///////////////////// KARDA keyup, keydown, keypress tarberutyunnery
       kvadratmetr();
-      finalPrice[2]=km*800;
-      if(km=='' || km==0){
+      finalPrice[2]=houseSquareMeter*800;
+      if(houseSquareMeter=='' || houseSquareMeter==0){
       	sum=0;
       	//document.getElementById("result").innerHTML='hello';
       	//console.log('ok')
       }
       //const f2 = document.getElementById('2f');
-      if (document.getElementById('2.5').checked) {
-      	console.log('checked 2.5');
-      }
+      // if (document.getElementById('2.5').checked) {
+      // 	console.log('checked 2.5');
+      // }
 
-      //console.log(km);
-      //console.log(typeof km);
+      //console.log(houseSquareMeter);
+      //console.log(typeof houseSquareMeter);
       document.getElementById("result").innerHTML=sum;
    } );
 
@@ -48,16 +52,16 @@
     
       finalPrice[1]=0;
       arraySum();
-      if(km==0 || km==undefined)sum=0;
+      if(houseSquareMeter==0 || houseSquareMeter==undefined)sum=0;
       document.getElementById("result").innerHTML=sum;
    });	
 
 
    document.getElementById("2.8").addEventListener('click',function(){
       
-      finalPrice[1]=km*200;      
+      finalPrice[1]=houseSquareMeter*200;      
       arraySum();
-      if(km==0)sum=0;
+      if(houseSquareMeter==0)sum=0;
       document.getElementById("result").innerHTML=sum;
    });
 
@@ -67,26 +71,26 @@
 	//2
    document.getElementById("1").addEventListener('click',function(){
       
-   	finalPrice[2]=km*800;          ///односкатная крыша
+   	finalPrice[2]=houseSquareMeter*800;          ///односкатная крыша
       arraySum();
-      if(km==0)sum=0;
+      if(houseSquareMeter==0)sum=0;
       document.getElementById("result").innerHTML=sum;
    });
    
    document.getElementById("2").addEventListener('click',function(){
        
    	      ///Мансардная(двухскатная),
-      finalPrice[2]=km*1000;
+      finalPrice[2]=houseSquareMeter*1000;
       arraySum();
-      if(km==0)sum=0;
+      if(houseSquareMeter==0)sum=0;
       document.getElementById("result").innerHTML=sum;
    });
 
    document.getElementById("3").addEventListener('click',function(){
       ///полноценный второй этаж 2,5 метра высотой 
-      finalPrice[2]=km*1200;
+      finalPrice[2]=houseSquareMeter*1200;
       arraySum();
-      if(km==0)sum=0;
+      if(houseSquareMeter==0)sum=0;
       document.getElementById("result").innerHTML=sum;
    });
 
@@ -95,15 +99,15 @@
       
       finalPrice[3]=0;
       arraySum();
-      if(km==0)sum=0;
+      if(houseSquareMeter==0)sum=0;
       document.getElementById("result").innerHTML=sum
 	})
 
    document.getElementById("224").addEventListener('click',function(){ 
     
-   	finalPrice[3]=km*300;
+   	finalPrice[3]=houseSquareMeter*300;
       arraySum();
-      if(km==0)sum=0;
+      if(houseSquareMeter==0)sum=0;
       document.getElementById("result").innerHTML=sum;
    });
 
@@ -113,15 +117,15 @@ document.getElementById("karkas").addEventListener('click',function(){
    
    finalPrice[4]=0;
    arraySum();
-   if(km==0)sum=0;
+   if(houseSquareMeter==0)sum=0;
    document.getElementById("result").innerHTML=sum;
 })
 
 document.getElementById("124").addEventListener('click',function(){ 
   
-      finalPrice[4]=km*600;
+      finalPrice[4]=houseSquareMeter*600;
       arraySum();
-      if(km==0)sum=0;
+      if(houseSquareMeter==0)sum=0;
       document.getElementById("result").innerHTML=sum;
    });
    
@@ -132,7 +136,7 @@ document.getElementById("124").addEventListener('click',function(){
    
    finalPrice[5]=document.getElementById("wind").value*8000;
    arraySum();
-   if(km==0)sum=0;
+   if(houseSquareMeter==0)sum=0;
    document.getElementById("result").innerHTML=sum;
 });
 
@@ -140,25 +144,25 @@ document.getElementById("124").addEventListener('click',function(){
 ///6
 document.getElementById("saiding").addEventListener('click',function(){
    
-   finalPrice[6]=km*1500;
+   finalPrice[6]=houseSquareMeter*1500;
    arraySum();
-   if(km==0)sum=0;
+   if(houseSquareMeter==0)sum=0;
    document.getElementById("result").innerHTML=sum;
 });
 
 document.getElementById("xaus").addEventListener('click',function(){
    
-   finalPrice[6]=km*1700;
+   finalPrice[6]=houseSquareMeter*1700;
    arraySum();
-   if(km==0)sum=0;
+   if(houseSquareMeter==0)sum=0;
    document.getElementById("result").innerHTML=sum;
 });
 
 document.getElementById("kirpich").addEventListener('click',function(){
    
-   finalPrice[6]=km*4200;
+   finalPrice[6]=houseSquareMeter*4200;
    arraySum();
-   if(km==0)sum=0;
+   if(houseSquareMeter==0)sum=0;
    document.getElementById("result").innerHTML=sum;
 });
 
@@ -168,10 +172,10 @@ let j=0;
 document.getElementById("vodostochnaya").addEventListener('click',function(){
    
    j++;
-   if(j%2!=0){finalPrice[7]=km*350;} 
+   if(j%2!=0){finalPrice[7]=houseSquareMeter*350;} 
    else{finalPrice[7]=0;};
    arraySum();
-   if(km==0)sum=0;
+   if(houseSquareMeter==0)sum=0;
    document.getElementById("result").innerHTML=sum;
 });
 
@@ -182,7 +186,7 @@ document.getElementById("terassa").addEventListener('keyup',function(){
    
    finalPrice[8]=document.getElementById("terassa").value*3000;
    arraySum();
-   if(km==0)sum=0;
+   if(houseSquareMeter==0)sum=0;
    document.getElementById("result").innerHTML=sum;
    
 });
@@ -193,15 +197,15 @@ document.getElementById("kark").addEventListener('click',function(){
   
    finalPrice[9]=0;
    arraySum();
-   if(km==0)sum=0;
+   if(houseSquareMeter==0)sum=0;
    document.getElementById("result").innerHTML=sum;
 });
 
 document.getElementById("mejp").addEventListener('click',function(){
    
-   finalPrice[9]=km*1200;
+   finalPrice[9]=houseSquareMeter*1200;
    arraySum();
-   if(km==0)sum=0;
+   if(houseSquareMeter==0)sum=0;
    document.getElementById("result").innerHTML=sum;
 });
 
