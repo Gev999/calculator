@@ -4,3 +4,6 @@
 window.onload = ()=> {
     twoFloor();
 }
+window.onload = ()=> {
+    oneFloor();
+}

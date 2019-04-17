@@ -176,6 +176,7 @@ function twoFloor() {
 
     portition2.addEventListener('click', ()=> {
         finalPrice.housePortitions = houseSquareMeter*600;
+        console.log(finalPrice.housePortitions);
         getFinalPrice();
     })
     //------------------------
@@ -190,7 +191,7 @@ function twoFloor() {
             finalPrice.windowCount = 0;
         }
         else {
-            finalPrice.windowCount = val*800;
+            finalPrice.windowCount = val*8000;
         }
         getFinalPrice();
     }

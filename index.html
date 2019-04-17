@@ -49,6 +49,48 @@
       <div id="display"><p></p></div>
       <p id="result"></p>
     </div>
+<!---------------------------------------------------------------------->
+<br><br><label>ОДНОЭТАЖНЫЙ</label><br><br>
+   <div id="one-floor">
+      <input type="number"  id="houseSquareMeter1" min=1 >к.м. вашего дома<br>
+      Высота дома первого этажа:<br>
+      <input type="radio" name="height1" id="height.1-2.5"  value="2.5" checked> 2.5 метра
+      <input type="radio" name="height1" id="height.1-2.8"  value="2.8"> 2.8 метра<br>
+      Крыша из металлочерепицы:<br>
+      <input type="radio" name="roof1" id="roof.1-1" checked> односкатная<br>
+      <input type="radio" name="roof1" id="roof.1-2"> Четырехскатная крыша <br>
+      
+      
+      Пол первого этажа из <br>
+      <input type="radio" name="panel1"  id="panel.1-1" checked> СИП панели толщиной 174мм <br>
+      <input type="radio" name="panel1"  id="panel.1-2"> СИП панели толщиной 224мм <br>
+
+      Внутренние перегородки дома из <br>
+      <input type="radio" name="pereg1"  id="portition.1-1" checked > сип панели каркасные <br>
+      <input type="radio" name="pereg1" id="portition.1-2"> сип панели 124 мм <br>
+
+      Окна 
+      <input type="number" id="wind1" min=1><br>
+
+      Внешняя отделка дома <br>
+      <input type="radio" name="otdelka1" id="decoration.1-1">сайдингом<br>
+      <input type="radio" name="otdelka1" id="decoration.1-2"> блок Хаусом <br>
+      <input type="radio" name="otdelka1" id="decoration.1-3">фасадная плитка под керпич (цвет на выбор) <br><br>
+
+      <!--vodostochnaya sistema-->
+      <input type="checkbox" id="drainage-system1">Водосточная система<br><br>
+
+      Терасса:
+      <input type="number" id="terrace1" min=1><br><br>
+
+     
+
+      <!----Снегозадержатели:-->
+      <input type="checkbox" id="snow-shields1">Снегозадержатели<br><br>
+      
+      <div id="display"><p></p></div>
+      <p id="result.1"></p>
+    </div>
 
 
 
@@ -62,7 +104,7 @@
 
 
 
-    <!-- <script type="text/javascript" src="calculate.js"></script> -->
+    <script src="oneFloor.js"></script>
     <script src="script.js"></script>
     <script src="twoFloor.js"></script>
 
