@@ -10,7 +10,7 @@ window.onload = ()=> {
             twoChecked = false;
             floor1.style.display = "block";
             floor2.style.display = "none";
-            oneFloor();
+            floorPrice(0);
         }
     });
 
@@ -20,7 +20,7 @@ window.onload = ()=> {
             oneChecked = false;
             floor2.style.display = "block";
             floor1.style.display = "none";
-            twoFloor();
+            floorPrice(1);
         }
     });
 }
