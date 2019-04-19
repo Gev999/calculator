@@ -9,14 +9,15 @@ function twoFloor() {
         housePortitions: 0,      // внутренные перегородки дома
         windowCount: 0,          // количества окон
         homeDecoration: 0,       // внешная отделка дома
-        drainageSystem: 0,       // Водосточная система 
+        drainageSystem: 0,       // Водосточная система
         terrace: 0,              // терраса
         frameBeams: 0,           // каркасное балки
         snowShields: 0,          // снегозадержатели
+        sale: 0,
     };
 
     const result = document.getElementById('result');
-    const house_square_meter = document.getElementById('houseSquareMeter'); 
+    const house_square_meter = document.getElementById('houseSquareMeter');
 
     const house_height2_5 = document.getElementById('height-2.5');
     const house_height2_8 = document.getElementById('height-2.8');
@@ -45,6 +46,8 @@ function twoFloor() {
     const frameBeams2 = document.getElementById('frame-beams-2');
 
     const snowShields1 = document.getElementById('snow-shields');
+
+    const sale2 = document.getElementById('sale2');
 
     //----------------------------------------------------------------
 
@@ -339,14 +342,23 @@ function twoFloor() {
         }
     }
 
-    //----------------------
 
+    sale2.addEventListener('click', ()=>{
+      getFinalPrice();
+      if (sale2.checked) {
+        finalPrice.sale = (-1)*(finalSum/20);
+      }
+    
+    })
+    //----------------------
+    let finalSum;
     function getFinalPrice() {
         let sum = 0;
         if (finalPrice.price!=0) {
             for (let key in finalPrice) {
                 sum+= finalPrice[key];
             }
+            finalSum=sum;
             result.innerHTML = sum;
         }
         else {
@@ -354,8 +366,3 @@ function twoFloor() {
         }
     }
 }
-
-
-
-
- 
