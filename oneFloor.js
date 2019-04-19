@@ -87,6 +87,9 @@ function oneFloor() {
         document.getElementById('errorMsg1-1').innerHTML = '';
         document.getElementById('errorMsg2-1').innerHTML = '';
         document.getElementById('errorMsg3-1').innerHTML = '';
+        house_square_meter.classList.remove('error-v');
+        wind1.classList.remove('error-v');
+        terrace1.classList.remove('error-v');
 
         count1 = 0;
     }

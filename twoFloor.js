@@ -87,6 +87,9 @@ function twoFloor() {
         document.getElementById('errorMsg1').innerHTML = '';
         document.getElementById('errorMsg2').innerHTML = '';
         document.getElementById('errorMsg3').innerHTML = '';
+        house_square_meter.classList.remove('error-v');
+        wind.classList.remove('error-v');
+        terrace1.classList.remove('error-v');
         count2 = 0;
     }
 
