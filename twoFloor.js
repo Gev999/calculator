@@ -1,4 +1,12 @@
+let count2 = 0;
 function twoFloor() {
+    let error1 = false;
+    let error2 = false;
+    let error3 = false;
+    let errorMsg1 = '';
+    let errorMsg2 = '';
+    let errorMsg3 = '';
+
     let houseSquareMeter = 0;     // квадрат метр дома
 
     const finalPrice={
@@ -19,8 +27,8 @@ function twoFloor() {
     const result = document.getElementById('result');
     const house_square_meter = document.getElementById('houseSquareMeter');
 
-    const house_height2_5 = document.getElementById('height-2.5');
-    const house_height2_8 = document.getElementById('height-2.8');
+    const house_height2_5 = document.getElementById('height-2_5');
+    const house_height2_8 = document.getElementById('height-2_8');
 
     const roof1 = document.getElementById('roof-1');
     const roof2 = document.getElementById('roof-2');
@@ -51,19 +59,66 @@ function twoFloor() {
 
     //----------------------------------------------------------------
 
-    house_square_meter.addEventListener('change', getPrice);
+    //set default values
+    if (count2 > 0) {
+        defaultValues();
+    }
+
+    function defaultValues() {
+        result.innerHTML = '';
+        house_square_meter.value = '';
+        house_height2_5.checked = true;
+        roof1.checked = true;
+        panel1.checked = true;
+        portition1.checked = true;
+        wind.value = '';
+        decoration1.checked = false;
+        decoration2.checked = false;
+        decoration3.checked = false;
+        drainageSystem1.checked = false;
+        terrace1.value = '';
+        snowShields1.checked = false;
+        errorMsg1 = '';
+        errorMsg2 = '';
+        errorMsg3 = '';
+        error1 = false;
+        error2 = false;
+        error3 = false;
+        document.getElementById('errorMsg1').innerHTML = '';
+        document.getElementById('errorMsg2').innerHTML = '';
+        document.getElementById('errorMsg3').innerHTML = '';
+        count2 = 0;
+    }
+
+    function checkNumber(el, limit) {
+        if (el == '') {
+            return 'Заполните поле кв. м';
+        }
+        if (!isNumeric(el)) {
+            return 'Поле должно быть заполнено натуральным числом не меньше '+ limit;
+        }
+        if (el < limit) {
+            return 'Число не должно быть меньше ' + limit;
+        }
+        return '';
+    }
+
+    function isNumeric(n) {
+        for (let i = 0; i < n.length; i++) {
+            if (isNaN(n[i])) return false;
+        }
+        return true;
+    }
+
+    //house_square_meter.addEventListener('change', getPrice);
     house_square_meter.addEventListener('keyup', getPrice);
 
 
     function getPrice() {
 
-        houseSquareMeter = parseInt(house_square_meter.value);
-        //console.log(houseSquareMeter);
-        if (isNaN(houseSquareMeter)) {
-            finalPrice.price = 0;
-            //console.log(finalPrice.price);
-        }
-        else {
+        houseSquareMeter = house_square_meter.value;
+        errorMsg1 = checkNumber(houseSquareMeter, 80);
+        if (errorMsg1=='') {
             houseSquarePrice();
             houseHeightPrice();
             roofPrice();
@@ -73,6 +128,17 @@ function twoFloor() {
             drainingSystemPrice();
             frameBeamsPrice();
             snowShieldsPrice();
+            error1 = false;
+        }
+        else {
+            error1 = true;
+        }
+        document.getElementById('errorMsg1').innerHTML = errorMsg1;
+        if (error1) {
+            house_square_meter.classList.add('error-v');
+        }
+        else {
+            house_square_meter.classList.remove('error-v');
         }
         getFinalPrice();
     }
@@ -179,22 +245,34 @@ function twoFloor() {
 
     portition2.addEventListener('click', ()=> {
         finalPrice.housePortitions = houseSquareMeter*600;
-        console.log(finalPrice.housePortitions);
         getFinalPrice();
     })
     //------------------------
 
     //окна (цена)
     wind.addEventListener('keyup', windowPrice);
-    wind.addEventListener('change', windowPrice);
+    //wind.addEventListener('change', windowPrice);
 
     function windowPrice() {
-        const val = parseInt(wind.value);
-        if (isNaN(val) || val == 0) {
+        const val = wind.value;
+        errorMsg2 = checkNumber(val, 1);
+        if (errorMsg2=='') {
+            finalPrice.windowCount = val*8000;
+            error2 = false;
+        }
+        else if (errorMsg2=='Заполните поле кв. м') {
             finalPrice.windowCount = 0;
+            error2 = false;
         }
         else {
-            finalPrice.windowCount = val*8000;
+            error2 = true;
+        }
+        document.getElementById('errorMsg2').innerHTML = error2? errorMsg2 : '';
+        if (error2) {
+            wind.classList.add('error-v');
+        }
+        else {
+            wind.classList.remove('error-v');
         }
         getFinalPrice();
     }
@@ -285,15 +363,28 @@ function twoFloor() {
 
     //терраса (цена)
     terrace1.addEventListener('keyup', terracePrice);
-    terrace1.addEventListener('change', terracePrice);
+    //terrace1.addEventListener('change', terracePrice);
 
     function terracePrice(){
-        const val = parseInt(terrace1.value);
-        if (isNaN(val) || val == 0) {
+        const val = terrace1.value;
+        errorMsg3 = checkNumber(val, 1);
+        if (errorMsg3=='') {
+            finalPrice.terrace = val*3000;
+            error3 = false;
+        }
+        else if (errorMsg3=='Заполните поле кв. м') {
             finalPrice.terrace = 0;
+            error3 = false;
         }
         else {
-            finalPrice.terrace = val*3000;
+            error3 = true;
+        }
+        document.getElementById('errorMsg3').innerHTML = error3? errorMsg3: '';
+        if (error3) {
+            terrace1.classList.add('error-v');
+        }
+        else {
+            terrace1.classList.remove('error-v');
         }
         getFinalPrice();
     }
@@ -354,15 +445,24 @@ function twoFloor() {
     let finalSum;
     function getFinalPrice() {
         let sum = 0;
-        if (finalPrice.price!=0) {
+        const val = house_square_meter.value;
+        if (val=='') {
+            error1 = true;
+            errorMsg1 = 'Заполните поле кв. м';
+            house_square_meter.classList.add('error-v');
+            document.getElementById('errorMsg1').innerHTML = errorMsg1;
+        }
+        if (!error1 && !error2 && !error3) {
             for (let key in finalPrice) {
                 sum+= finalPrice[key];
             }
-            finalSum=sum;
+            finalSum1=sum;
             result.innerHTML = sum;
         }
         else {
-            result.innerHTML = 'Сперва заполните поле кв. м. !!!';
+            result.innerHTML = '';
         }
     }
+    
+    count2++;
 }

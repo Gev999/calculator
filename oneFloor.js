@@ -1,7 +1,15 @@
+let count1 = 0;
 function oneFloor() {
-    let houseSquareMeter1 = 0;     // квадрат метр дома
+    let error1 = false;
+    let error2 = false;
+    let error3 = false;
+    let errorMsg1 = '';
+    let errorMsg2 = '';
+    let errorMsg3 = '';
 
-    const finalPrice1={
+    let houseSquareMeter = 0;     // квадрат метр дома
+
+    const finalPrice={
         price: 0,                // начальная цена
         houseHeight: 0,          // высота этажа
         roofType: 0,             // тип крыши
@@ -16,54 +24,101 @@ function oneFloor() {
 
     };
 
-    const result1 = document.getElementById('result.1');
-    const house_square_meter1 = document.getElementById('houseSquareMeter1');
+    const result = document.getElementById('result1');
+    const house_square_meter = document.getElementById('houseSquareMeter1');
 
-    const house_height2_5_1 = document.getElementById('height.1-2.5');
-    const house_height2_8_1 = document.getElementById('height.1-2.8');
+    const house_height2_5 = document.getElementById('height1-2_5');
+    const house_height2_8 = document.getElementById('height1-2_8');
 
-    const roof1_1 = document.getElementById('roof.1-1');
-    const roof2_1 = document.getElementById('roof.1-2');
+    const roof1 = document.getElementById('roof1-1');
+    const roof2 = document.getElementById('roof1-2');
     //const roof3_1 = document.getElementById('roof.1-3');
 
-    const panel1_1 = document.getElementById('panel.1-1');
-    const panel2_1 = document.getElementById('panel.1-2');
+    const panel1 = document.getElementById('panel1-1');
+    const panel2 = document.getElementById('panel1-2');
 
-    const portition1_1 = document.getElementById('portition.1-1');
-    const portition2_1 = document.getElementById('portition.1-2');
+    const portition1 = document.getElementById('portition1-1');
+    const portition2 = document.getElementById('portition1-2');
 
-    const wind_1 = document.getElementById('wind1');
+    const wind = document.getElementById('wind1');
 
-    const decoration1_1 = document.getElementById('decoration.1-1');
-    const decoration2_1 = document.getElementById('decoration.1-2');
-    const decoration3_1 = document.getElementById('decoration.1-3');
+    const decoration1 = document.getElementById('decoration1-1');
+    const decoration2 = document.getElementById('decoration1-2');
+    const decoration3 = document.getElementById('decoration1-3');
 
-    const drainageSystem1_1 = document.getElementById('drainage-system1');
+    const drainageSystem1 = document.getElementById('drainage-system1');
 
-    const terrace1_1 = document.getElementById('terrace1');
+    const terrace1 = document.getElementById('terrace1');
 
     // const frameBeams1_1 = document.getElementById('frame-beams.1-1');
     // const frameBeams2_1 = document.getElementById('frame-beams.1-2');
 
-    const snowShields1_1 = document.getElementById('snow-shields1');
+    const snowShields1 = document.getElementById('snow-shields1');
 
     const sale1 = document.getElementById('sale1');
 
     //----------------------------------------------------------------
 
-    house_square_meter1.addEventListener('change', getPrice1);
-    house_square_meter1.addEventListener('keyup', getPrice1);
+    //set default values
+    if (count1 > 0) {
+        defaultValues();
+    }
 
+    function defaultValues() {
+        result.innerHTML = '';
+        house_square_meter.value = '';
+        house_height2_5.checked = true;
+        roof1.checked = true;
+        panel1.checked = true;
+        portition1.checked = true;
+        wind.value = '';
+        decoration1.checked = false;
+        decoration2.checked = false;
+        decoration3.checked = false;
+        drainageSystem1.checked = false;
+        terrace1.value = '';
+        snowShields1.checked = false;
+        errorMsg1 = '';
+        errorMsg2 = '';
+        errorMsg3 = '';
+        error1 = false;
+        error2 = false;
+        error3 = false;
+        document.getElementById('errorMsg1-1').innerHTML = '';
+        document.getElementById('errorMsg2-1').innerHTML = '';
+        document.getElementById('errorMsg3-1').innerHTML = '';
+
+        count1 = 0;
+    }
+
+    //house_square_meter.addEventListener('change', getPrice1);
+    house_square_meter.addEventListener('keyup', getPrice1);
+
+    function checkNumber(el, limit) {
+        if (el == '') {
+            return 'Заполните поле кв. м';
+        }
+        if (!isNumeric(el)) {
+            return 'Поле должно быть заполнено натуральным числом не меньше '+ limit;
+        }
+        if (el < limit) {
+            return 'Число не должно быть меньше ' + limit;
+        }
+        return '';
+    }
+
+    function isNumeric(n) {
+        for (let i = 0; i < n.length; i++) {
+            if (isNaN(n[i])) return false;
+        }
+        return true;
+    }
 
     function getPrice1() {
 
-        houseSquareMeter1 = parseInt(house_square_meter1.value);
-        //console.log(houseSquareMeter);
-        if (isNaN(houseSquareMeter1)) {
-            finalPrice1.price = 0;
-            //console.log(finalPrice.price);
-        }
-        else {
+        houseSquareMeter = house_square_meter.value;
+        errorMsg1 = checkNumber(houseSquareMeter, 80);
+        if (errorMsg1=='') {
             houseSquarePrice1();
             houseHeightPrice1();
             roofPrice1();
@@ -73,69 +128,80 @@ function oneFloor() {
             drainingSystemPrice1();
             //frameBeamsPrice1();
             snowShieldsPrice1();
+            error1 = false;
             a=0;
+        }
+        else {
+            error1 = true;
+        }
+        document.getElementById('errorMsg1-1').innerHTML = errorMsg1;
+        if (error1) {
+            house_square_meter.classList.add('error-v');
+        }
+        else {
+            house_square_meter.classList.remove('error-v');
         }
         getFinalPrice1();
     }
 
     //квадрат метр дома (цена)
     function houseSquarePrice1() {
-        if (houseSquareMeter1<=99) {
-            finalPrice1.price=houseSquareMeter1*12500
+        if (houseSquareMeter<=99) {
+            finalPrice.price=houseSquareMeter*12500
         }
-        else if (houseSquareMeter1>=100 && houseSquareMeter1<=120) {
-            finalPrice1.price=houseSquareMeter1*12000
+        else if (houseSquareMeter>=100 && houseSquareMeter<=120) {
+            finalPrice.price=houseSquareMeter*12000
         }
-        else if (houseSquareMeter1>=121 && houseSquareMeter1<=130) {
-            finalPrice1.price=houseSquareMeter1*11500
+        else if (houseSquareMeter>=121 && houseSquareMeter<=130) {
+            finalPrice.price=houseSquareMeter*11500
         }
-        else if (houseSquareMeter1>=131){
-            finalPrice1.price=houseSquareMeter1*11000
+        else if (houseSquareMeter>=131){
+            finalPrice.price=houseSquareMeter*11000
         }
     }
     // --------------------------
 
     //высота этажа (цена)
-    house_height2_5_1.addEventListener('click', ()=> {
-        finalPrice1.houseHeight = 0;
+    house_height2_5.addEventListener('click', ()=> {
+        finalPrice.houseHeight = 0;
         getFinalPrice1();
     })
 
-    house_height2_8_1.addEventListener('click', ()=> {
-        finalPrice.houseHeight = houseSquareMeter1*300;
+    house_height2_8.addEventListener('click', ()=> {
+        finalPrice.houseHeight = houseSquareMeter*300;
         getFinalPrice1();
     })
 
     function houseHeightPrice1() {
-        if (house_height2_5_1.checked) {
-            finalPrice1.houseHeight = 0;
+        if (house_height2_5.checked) {
+            finalPrice.houseHeight = 0;
         }
-        else if (house_height2_8_1.checked) {
-            finalPrice1.houseHeight = houseSquareMeter1*300;
+        else if (house_height2_8.checked) {
+            finalPrice.houseHeight = houseSquareMeter*300;
         }
     }
     //------------------------
 
     //тип крыши (цена)
     function roofPrice1() {
-        if (roof1_1.checked) {
-            finalPrice1.roofType = houseSquareMeter1*1400;
+        if (roof1.checked) {
+            finalPrice.roofType = houseSquareMeter*1400;
         }
         else if (roof2.checked) {
-            finalPrice1.roofType = houseSquareMeter1*1800;
+            finalPrice.roofType = houseSquareMeter*1800;
         }
         // else if (roof3.checked) {
         //     finalPrice.roofType = houseSquareMeter*1200;
         // }
     }
 
-    roof1_1.addEventListener('click', ()=> {
-        finalPrice1.roofType = houseSquareMeter1*1400;
+    roof1.addEventListener('click', ()=> {
+        finalPrice.roofType = houseSquareMeter*1400;
         getFinalPrice1();
     })
 
-    roof2_1.addEventListener('click', ()=> {
-        finalPrice1.roofType = houseSquareMeter1*1800;
+    roof2.addEventListener('click', ()=> {
+        finalPrice.roofType = houseSquareMeter*1800;
         getFinalPrice1();
     })
 
@@ -147,58 +213,71 @@ function oneFloor() {
 
     // толщина панели (цена)
     function panelThicknessPrice1() {
-        if (panel1_1.checked) {
-            finalPrice1.panelThickness = 0;
+        if (panel1.checked) {
+            finalPrice.panelThickness = 0;
         }
-        else if (panel2_1.checked) {
-            finalPrice1.panelThickness = houseSquareMeter1*600;
+        else if (panel2.checked) {
+            finalPrice.panelThickness = houseSquareMeter*600;
         }
     }
 
-    panel1_1.addEventListener('click', ()=> {
-        finalPrice1.panelThickness = 0;
+    panel1.addEventListener('click', ()=> {
+        finalPrice.panelThickness = 0;
         getFinalPrice1();
     })
 
-    panel2_1.addEventListener('click', ()=> {
-        finalPrice1.panelThickness = houseSquareMeter1*600;
+    panel2.addEventListener('click', ()=> {
+        finalPrice.panelThickness = houseSquareMeter*600;
         getFinalPrice1();
     })
     //------------------------
 
     //внутренные перегородки дома (цена)
     function portitionPrice1() {
-        if (portition1_1.checked) {
-            finalPrice1.housePortitions = 0;
+        if (portition1.checked) {
+            finalPrice.housePortitions = 0;
         }
-        else if (portition2_1.checked) {
-            finalPrice1.housePortitions = houseSquareMeter1*1200;
+        else if (portition2.checked) {
+            finalPrice.housePortitions = houseSquareMeter*1200;
         }
     }
 
-    portition1_1.addEventListener('click', ()=> {
-        finalPrice1.housePortitions = 0;
+    portition1.addEventListener('click', ()=> {
+        finalPrice.housePortitions = 0;
         getFinalPrice1();
     })
 
-    portition2_1.addEventListener('click', ()=> {
-        finalPrice1.housePortitions = houseSquareMeter1*1200;
+    portition2.addEventListener('click', ()=> {
+        finalPrice.housePortitions = houseSquareMeter*1200;
         //console.log(finalPrice.housePortitions);
         getFinalPrice1();
     })
     //------------------------
 
     //окна (цена)
-    wind1.addEventListener('keyup', windowPrice1);
-    wind1.addEventListener('change', windowPrice1);
+    wind.addEventListener('keyup', windowPrice1);
+    //wind.addEventListener('change', windowPrice1);
 
     function windowPrice1() {
-        const val = parseInt(wind1.value);
-        if (isNaN(val) || val == 0) {
-            finalPrice1.windowCount = 0;
+        const val = wind1.value;
+        errorMsg2 = checkNumber(val, 1);
+        if (errorMsg2=='') {
+            finalPrice.windowCount = val*8000;
+            error2 = false;
+        }
+        else if (errorMsg2=='Заполните поле кв. м') {
+            finalPrice.windowCount = 0;
+            error2 = false;
         }
         else {
-            finalPrice1.windowCount = val*8000;
+            error2 = true;
+        }
+        document.getElementById('errorMsg2-1').innerHTML = error2? errorMsg2 : '';
+        if (error2) {
+            wind1.classList.add('error-v');
+        }
+        else {
+            wind1.classList.remove('error-v');
         }
         getFinalPrice1();
     }
@@ -208,96 +287,109 @@ function oneFloor() {
     let dec1Checked1 = true;
     let dec2Checked1 = true;
     let dec3Checked1 = true;
-    decoration1_1.addEventListener('click', ()=>{
+    decoration1.addEventListener('click', ()=>{
         if (dec1Checked1) {
-            finalPrice1.homeDecoration = houseSquareMeter1*1500;
+            finalPrice.homeDecoration = houseSquareMeter*1500;
             dec1Checked1 = false;
             dec2Checked1 = true;
             dec3Checked1 = true;
         }
         else {
-            decoration1_1.checked = false;
+            decoration1.checked = false;
             dec1Checked1 = true;
-            finalPrice1.homeDecoration = 0;
+            finalPrice.homeDecoration = 0;
         }
         getFinalPrice1();
     });
 
-    decoration2_1.addEventListener('click', ()=>{
+    decoration2.addEventListener('click', ()=>{
         if (dec2Checked1) {
-            finalPrice1.homeDecoration = houseSquareMeter1*1700;
+            finalPrice.homeDecoration = houseSquareMeter*1700;
             dec2Checked1 = false;
             dec1Checked1 = true;
             dec3Checked1 = true;
         }
         else {
-            decoration2_1.checked = false;
+            decoration2.checked = false;
             dec2Checked1 = true;
-            finalPrice1.homeDecoration = 0;
+            finalPrice.homeDecoration = 0;
         }
         getFinalPrice1();
     });
 
-    decoration3_1.addEventListener('click', ()=>{
+    decoration3.addEventListener('click', ()=>{
         if (dec3Checked1) {
-            finalPrice1.homeDecoration = houseSquareMeter1*4200;
+            finalPrice.homeDecoration = houseSquareMeter*4200;
             dec3Checked1 = false;
             dec1Checked1 = true;
             dec2Checked1 = true;
         }
         else {
-            decoration3_1.checked = false;
+            decoration3.checked = false;
             dec3Checked1 = true;
-            finalPrice1.homeDecoration = 0;
+            finalPrice.homeDecoration = 0;
         }
         getFinalPrice1();
     })
 
     function decorationPrice1() {
-        if (decoration1_1.checked) {
-            finalPrice1.homeDecoration = houseSquareMeter1*1500;
+        if (decoration1.checked) {
+            finalPrice.homeDecoration = houseSquareMeter*1500;
         }
-        else if (decoration2_1.checked) {
-            finalPrice1.homeDecoration = houseSquareMeter1*1700;
+        else if (decoration2.checked) {
+            finalPrice.homeDecoration = houseSquareMeter*1700;
         }
-        else if (decoration3_1.checked) {
-            finalPrice1.homeDecoration = houseSquareMeter1*4200;
+        else if (decoration3.checked) {
+            finalPrice.homeDecoration = houseSquareMeter*4200;
         }
     }
     //--------------------------
 
     //Водосточная система (цена)
-    drainageSystem1_1.addEventListener('click', ()=> {
-        if (drainageSystem1_1.checked) {
-            finalPrice1.drainageSystem = houseSquareMeter1*550;
+    drainageSystem1.addEventListener('click', ()=> {
+        if (drainageSystem1.checked) {
+            finalPrice.drainageSystem = houseSquareMeter*550;
         }
         else {
-            finalPrice1.drainageSystem = 0;
+            finalPrice.drainageSystem = 0;
         }
         getFinalPrice1();
     })
 
     function drainingSystemPrice1() {
-        if (drainageSystem1_1.checked) {
-            finalPrice1.drainageSystem = houseSquareMeter1*550;
+        if (drainageSystem1.checked) {
+            finalPrice.drainageSystem = houseSquareMeter*550;
         }
         else {
-            finalPrice1.drainageSystem = 0;
+            finalPrice.drainageSystem = 0;
         }
     }
     //-------------------------
 
     //терраса (цена)
-    terrace1_1.addEventListener('keyup', terracePrice1);
-    terrace1_1.addEventListener('change', terracePrice1);
+    terrace1.addEventListener('keyup', terracePrice1);
+    //terrace1.addEventListener('change', terracePrice1);
 
     function terracePrice1(){
-        const val = parseInt(terrace1_1.value);
-        if (isNaN(val) || val == 0) {
-            finalPrice1.terrace = 0;
+        const val = terrace1.value;
+        errorMsg3 = checkNumber(val, 1);
+        if (errorMsg3=='') {
+            finalPrice.terrace = val*3000;
+            error3 = false;
+        }
+        else if (errorMsg3=='Заполните поле кв. м') {
+            finalPrice.terrace = 0;
+            error3 = false;
         }
         else {
-            finalPrice1.terrace = val*3000;
+            error3 = true;
+        }
+        document.getElementById('errorMsg3-1').innerHTML = error3? errorMsg3: '';
+        if (error3) {
+            terrace1.classList.add('error-v');
+        }
+        else {
+            terrace1.classList.remove('error-v');
         }
         getFinalPrice1();
     }
@@ -306,10 +398,10 @@ function oneFloor() {
     //каркасное балки (цена)
     // function frameBeamsPrice1() {
     //     if (frameBeams1_1.checked) {
-    //         finalPrice1.frameBeams = 0;
+    //         finalPrice.frameBeams = 0;
     //     }
     //     else if (frameBeams2_1.checked) {
-    //         finalPrice1.frameBeams = houseSquareMeter1*1200;
+    //         finalPrice.frameBeams = houseSquareMeter*1200;
     //     }
     // }
 
@@ -325,30 +417,30 @@ function oneFloor() {
     //----------------------
 
     //снегозадержатели (цена)
-    snowShields1_1.addEventListener('click', ()=> {
-        if (snowShields1_1.checked) {
-            finalPrice1.snowShields = houseSquareMeter1*600;
+    snowShields1.addEventListener('click', ()=> {
+        if (snowShields1.checked) {
+            finalPrice.snowShields = houseSquareMeter*600;
         }
         else {
             //code ...
-            finalPrice1.snowShields = 0;
+            finalPrice.snowShields = 0;
         }
         getFinalPrice1();
     })
 
     function snowShieldsPrice1() {
-        if (snowShields1_1.checked) {
-            finalPrice1.snowShields = houseSquareMeter1*600;
+        if (snowShields1.checked) {
+            finalPrice.snowShields = houseSquareMeter*600;
         }
         else {
             //code ...
-            finalPrice1.snowShields = 0;
+            finalPrice.snowShields = 0;
         }
     }
     let a=0;
 
     sale1.addEventListener('click', ()=>{
-      result1.innerHTML = (finalSum1-finalSum1/20);
+      result.innerHTML = (finalSum1-finalSum1/20);
 
     })
 
@@ -357,15 +449,24 @@ function oneFloor() {
     let finalSum1;
     function getFinalPrice1() {
         let sum = 0;
-        if (finalPrice1.price!=0) {
-            for (let key in finalPrice1) {
-                sum+= finalPrice1[key];
+        const val = house_square_meter.value;
+        if (val=='') {
+            error1 = true;
+            errorMsg1 = 'Заполните поле кв. м';
+            house_square_meter.classList.add('error-v');
+            document.getElementById('errorMsg1-1').innerHTML = errorMsg1;
+        }
+        if (!error1 && !error2 && !error3) {
+            for (let key in finalPrice) {
+                sum+= finalPrice[key];
             }
             finalSum1=sum;
-            result1.innerHTML = sum;
+            result.innerHTML = sum;
         }
         else {
-            result1.innerHTML = 'Сперва заполните поле кв. м. !!!';
+            result.innerHTML = '';
         }
     }
+
+    count1++;
 }

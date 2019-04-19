@@ -1,116 +1,118 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <!--<link rel="stylesheet" href="style.css">-->
-  </head>
-  <body>
-    <input type="radio" name="floor"  id="one-floor" value="one-floor" >Одноэтажный дом
-    <input type="radio" name="floor"  id="two-floor" value="two-floor" >Двухэтажный дом<br>
-    <div id="two-floor">
-      <input type="number" class="setnum"  id="houseSquareMeter" min=1 >к.м. вашего дома<br>
-      Высота дома первого этажа:<br>
-      <input type="radio" name="height" id="height-2.5"  value="2.5" checked> 2.5 метра
-      <input type="radio" name="height" id="height-2.8"  value="2.8"> 2.8 метра<br>
-      Крыша из металлочерепицы:<br>
-      <input type="radio" name="roof" id="roof-1" checked> односкатная<br>
-      <input type="radio" name="roof" id="roof-2"> Мансардная(двухскатная)<br>
-      <input type="radio" name="roof" id="roof-3"> полноценный второй этаж 2,5 метра<br>
 
-      Пол первого этажа из <br>
-      <input type="radio" name="panel"  id="panel-1" checked> СИП панели толщиной 174мм <br>
-      <input type="radio" name="panel"  id="panel-2"> СИП панели толщиной 224мм <br>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-      Внутренние перегородки дома из <br>
-      <input type="radio" name="pereg"  id="portition-1" checked > сип панели каркасные <br>
-      <input type="radio" name="pereg" id="portition-2"> сип панели 124 мм <br>
+<body>
+  <input type="radio" name="floor" id="one_floor" value="one-floor">Одноэтажный дом
+  <input type="radio" name="floor" id="two_floor" value="two-floor">Двухэтажный дом<br>
+  <div id="two-floor">
+    <input type="text" class="setnum" id="houseSquareMeter">к.м. вашего дома<br>
+    <p class="error-msg" id="errorMsg1"></p>
+    Высота дома первого этажа:<br>
+    <input type="radio" name="height" id="height-2_5" value="2.5" checked> 2.5 метра
+    <input type="radio" name="height" id="height-2_8" value="2.8"> 2.8 метра<br>
+    Крыша из металлочерепицы:<br>
+    <input type="radio" name="roof" id="roof-1" checked> односкатная<br>
+    <input type="radio" name="roof" id="roof-2"> Мансардная(двухскатная)<br>
+    <input type="radio" name="roof" id="roof-3"> полноценный второй этаж 2,5 метра<br>
 
-      Окна
-      <input type="number" class="setnum" id="wind" min=1><br>
+    Пол первого этажа из <br>
+    <input type="radio" name="panel" id="panel-1" checked> СИП панели толщиной 174мм <br>
+    <input type="radio" name="panel" id="panel-2"> СИП панели толщиной 224мм <br>
 
-      Внешняя отделка дома <br>
-      <input type="radio" name="otdelka" id="decoration-1">сайдингом<br>
-      <input type="radio" name="otdelka" id="decoration-2"> блок Хаусом <br>
-      <input type="radio" name="otdelka" id="decoration-3">фасадная плитка под керпич (цвет на выбор) <br><br>
+    Внутренние перегородки дома из <br>
+    <input type="radio" name="pereg" id="portition-1" checked> сип панели каркасные <br>
+    <input type="radio" name="pereg" id="portition-2"> сип панели 124 мм <br>
 
-      <!--vodostochnaya sistema-->
-      <input type="checkbox" id="drainage-system">Водосточная система<br><br>
+    Окна
+    <input type="text" class="setnum" id="wind"><br>
+    <p class="error-msg" id="errorMsg2"></p>
 
-      Терасса:
-      <input type="number" class="setnum" id="terrace" min=1><br><br>
+    Внешняя отделка дома <br>
+    <input type="radio" name="otdelka" id="decoration-1">сайдингом<br>
+    <input type="radio" name="otdelka" id="decoration-2"> блок Хаусом <br>
+    <input type="radio" name="otdelka" id="decoration-3">фасадная плитка под керпич (цвет на выбор) <br><br>
 
-      Межэтажное перекрытие <br>
-      <input type="radio" name="perkr"  id="frame-beams-1" checked > каркасное <br>
-      <input type="radio" name="perkr" id="frame-beams-2"> сип панели  <br><br>
+    <!--vodostochnaya sistema-->
+    <input type="checkbox" id="drainage-system">Водосточная система<br><br>
 
-      <!--Снегозадержатели:-->
-      <input type="checkbox" id="snow-shields">Снегозадержатели<br><br>
+    Терасса:
+    <input type="text" class="setnum" id="terrace" ><br><br>
+    <p class="error-msg" id="errorMsg3"></p>
 
-      <div id="display"><p></p></div>
-      <button id="sale2">5% скидки по промокоду</button>
-      <p id="result"></p>
+    Межэтажное перекрытие <br>
+    <input type="radio" name="perkr" id="frame-beams-1" checked> каркасное <br>
+    <input type="radio" name="perkr" id="frame-beams-2"> сип панели <br><br>
+
+    <!--Снегозадержатели:-->
+    <input type="checkbox" id="snow-shields">Снегозадержатели<br><br>
+
+    <div id="display">
+      <p></p>
     </div>
-<!---------------------------------------------------------------------->
-<br><br><label>ОДНОЭТАЖНЫЙ</label><br><br>
-   <div id="one-floor">
-      <input type="number" class="setnum" id="houseSquareMeter1" min=1 >к.м. вашего дома<br>
-      Высота дома первого этажа:<br>
-      <input type="radio" name="height1" id="height.1-2.5"  value="2.5" checked> 2.5 метра
-      <input type="radio" name="height1" id="height.1-2.8"  value="2.8"> 2.8 метра<br>
-      Крыша из металлочерепицы:<br>
-      <input type="radio" name="roof1" id="roof.1-1" checked> односкатная<br>
-      <input type="radio" name="roof1" id="roof.1-2"> Четырехскатная крыша <br>
+    <button id="sale2">5% скидки по промокоду</button>
+    <p id="result"></p>
+  </div>
+  <!---------------------------------------------------------------------->
+  <!-- <br><br><label>ОДНОЭТАЖНЫЙ</label><br><br> -->
+  <div id="one-floor">
+    <input type="text" class="setnum" id="houseSquareMeter1">к.м. вашего дома<br>
+    <p id="errorMsg1-1" class="error-msg"></p>
+    Высота дома первого этажа:<br>
+    <input type="radio" name="height1" id="height1-2_5" value="2.5" checked> 2.5 метра
+    <input type="radio" name="height1" id="height1-2_8" value="2.8"> 2.8 метра<br>
+    Крыша из металлочерепицы:<br>
+    <input type="radio" name="roof1" id="roof1-1" checked> односкатная<br>
+    <input type="radio" name="roof1" id="roof1-2"> Четырехскатная крыша <br>
 
 
-      Пол первого этажа из <br>
-      <input type="radio" name="panel1"  id="panel.1-1" checked> СИП панели толщиной 174мм <br>
-      <input type="radio" name="panel1"  id="panel.1-2"> СИП панели толщиной 224мм <br>
+    Пол первого этажа из <br>
+    <input type="radio" name="panel1" id="panel1-1" checked> СИП панели толщиной 174мм <br>
+    <input type="radio" name="panel1" id="panel1-2"> СИП панели толщиной 224мм <br>
 
-      Внутренние перегородки дома из <br>
-      <input type="radio" name="pereg1"  id="portition.1-1" checked > сип панели каркасные <br>
-      <input type="radio" name="pereg1" id="portition.1-2"> сип панели 124 мм <br>
+    Внутренние перегородки дома из <br>
+    <input type="radio" name="pereg1" id="portition1-1" checked> сип панели каркасные <br>
+    <input type="radio" name="pereg1" id="portition1-2"> сип панели 124 мм <br>
 
-      Окна
-      <input type="number" class="setnum" id="wind1" min=1><br>
+    Окна
+    <input type="text" class="setnum" id="wind1" /><br>
+    <p id="errorMsg2-1" class="error-msg"></p>
 
-      Внешняя отделка дома <br>
-      <input type="radio" name="otdelka1" id="decoration.1-1">сайдингом<br>
-      <input type="radio" name="otdelka1" id="decoration.1-2"> блок Хаусом <br>
-      <input type="radio" name="otdelka1" id="decoration.1-3">фасадная плитка под керпич (цвет на выбор) <br><br>
+    Внешняя отделка дома <br>
+    <input type="radio" name="otdelka1" id="decoration1-1">сайдингом<br>
+    <input type="radio" name="otdelka1" id="decoration1-2"> блок Хаусом <br>
+    <input type="radio" name="otdelka1" id="decoration1-3">фасадная плитка под керпич (цвет на выбор) <br><br>
 
-      <!--vodostochnaya sistema-->
-      <input type="checkbox" id="drainage-system1">Водосточная система<br><br>
+    <!--vodostochnaya sistema-->
+    <input type="checkbox" id="drainage-system1">Водосточная система<br><br>
 
-      Терасса:
-      <input type="number" class="setnum" id="terrace1" min=1><br><br>
+    Терасса:
+    <input type="text" class="setnum" id="terrace1"><br><br>
+    <p id="errorMsg3-1" class="error-msg"></p>
 
 
 
-      <!----Снегозадержатели:-->
-      <input type="checkbox" id="snow-shields1">Снегозадержатели<br><br>
+    <!----Снегозадержатели:-->
+    <input type="checkbox" id="snow-shields1">Снегозадержатели<br><br>
 
-      <div id="display"><p></p></div>
-      <button id="sale1">5% скидки по промокоду</button>
-      <p id="result.1"></p>
-
+    <div id="display">
+      <p></p>
     </div>
+    <button id="sale1">5% скидки по промокоду</button>
+    <p id="result1"></p>
+
+  </div>
+
+  <script src="twoFloor.js"></script>
+  <script src="oneFloor.js"></script>
+  <script src="script.js"></script>
 
 
+</body>
 
-
-
-
-
-
-
-
-
-
-    <script src="twoFloor.js"></script>
-    <script src="oneFloor.js"></script>
-    <script src="script.js"></script>
-
-
-  </body>
 </html>
