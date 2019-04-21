@@ -130,6 +130,7 @@ input[type="checkbox"]:checked ~label .check-img img{
 .radio-blocks, .radio-block-item > div {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .window-list {
@@ -147,6 +148,7 @@ input[type="checkbox"]:checked ~label .check-img img{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
 }
 
 .display {
