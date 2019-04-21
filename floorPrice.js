@@ -56,7 +56,7 @@ function floorPrice(idx) {
 
     const snowShields1 = document.getElementsByClassName('snow-shields')[idx];
 
-    const sale2 = document.getElementsByClassName('sale')[idx];
+    const sale = document.getElementById('sale');
 
     //---------------------------------------------------------------------------
 
@@ -464,6 +464,14 @@ function floorPrice(idx) {
         }
     }
     //-----------------------------------
+    sale.addEventListener('click', ()=>{
+        
+            result.innerHTML = Math.floor(finalSum - finalSum/20);
+            
+        
+
+    })
+
 
     //Получить всю сумму
     let finalSum;
