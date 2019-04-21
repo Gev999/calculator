@@ -180,7 +180,7 @@ input[type="checkbox"]:checked ~label .check-img img{
   font-size: 22px;
 }
 /*Button style*/
-.btn-block {
+#btn-block {
   display: none;
   justify-content: center;
   align-items: center;
