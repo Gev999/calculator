@@ -79,6 +79,9 @@ function floorPrice(idx) {
         drainageSystem1.checked = false;
         terrace1.value = '';
         snowShields1.checked = false;
+        if (idx==1) {
+            frameBeams1.checked = true;
+        }
         errorMsg1 = '';
         errorMsg2 = '';
         errorMsg3 = '';
