@@ -470,7 +470,7 @@ function floorPrice(idx) {
     sale.addEventListener('click', ()=>{
         
         if (!(error1 || error2 || error3) && result.innerHTML!='') {   
-            result.innerHTML = Math.floor(finalSum - finalSum/20);  
+            result.innerHTML = Math.floor(finalSum - finalSum/20) + ' ₽';  
         }
 
     })
@@ -492,7 +492,7 @@ function floorPrice(idx) {
                 sum+= finalPrice[key];
             }
             finalSum=sum;
-            result.innerHTML = sum;
+            result.innerHTML = sum + ' ₽';
         }
         else {
             result.innerHTML = 'Ошибка!!';
