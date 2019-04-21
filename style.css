@@ -184,6 +184,7 @@ input[type="checkbox"]:checked ~label .check-img img{
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 50px;
 }
 
 #sale {
