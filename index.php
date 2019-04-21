@@ -334,7 +334,7 @@
                                     </label>
                                 </div>
                                 <div class="radio-block">
-                                    <input type="radio" name="roof3" class="roof-3" id="roof-3_2" />
+                                    <input type="radio" name="roof2" class="roof-3" id="roof-3_2" />
                                     <label for="roof-3_2">
                                         <span class="check-img">
                                             <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg"
