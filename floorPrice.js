@@ -484,7 +484,7 @@ function floorPrice(idx) {
             result.innerHTML = sum;
         }
         else {
-            result.innerHTML = '';
+            result.innerHTML = 'Ошибка!!';
         }
     }
 
