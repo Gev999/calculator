@@ -466,7 +466,7 @@ function floorPrice(idx) {
     //-----------------------------------
     sale.addEventListener('click', ()=>{
         
-        if (!(error1 || error2 || error3)) {   
+        if (!(error1 || error2 || error3) && result.innerHTML!='') {   
             result.innerHTML = Math.floor(finalSum - finalSum/20);  
         }
 
