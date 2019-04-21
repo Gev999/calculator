@@ -532,7 +532,7 @@
                 </div>
 
             </div>
-            <div class="btn-block">
+            <div id="btn-block">
                 <button id="sale">5% скидки по промокоду</button>
             </div>
         </div>
