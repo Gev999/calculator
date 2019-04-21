@@ -102,7 +102,7 @@ function floorPrice(idx) {
             return 'Заполните поле кв. м';
         }
         if (!isNumeric(el)) {
-            return 'Поле должно быть заполнено натуральным числом не меньше '+ limit;
+            return 'Поле должно быть заполнено числом';
         }
         if (el < limit) {
             return 'Число не должно быть меньше ' + limit;
@@ -111,8 +111,40 @@ function floorPrice(idx) {
     }
 
     function isNumeric(n) {
+        let isFloat = 0;
+        if (n.length == 1 && isNaN(n[0])) return false;
         for (let i = 0; i < n.length; i++) {
-            if (isNaN(n[i])) return false;
+            if (n[i]=='.') {
+                if (isFloat > 0) return false;
+                else {
+                    isFloat++;
+                }
+            }
+            else if (isNaN(n[i]) || n[i]==' ') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function checkNumber2(el, limit) {
+        if (el == '') {
+            return 'Заполните поле кв. м';
+        }
+        if (!isNumeric2(el)) {
+            return 'Поле должно быть заполнено натуральным числом';
+        }
+        if (el < limit) {
+            return 'Число не должно быть меньше ' + limit;
+        }
+        return '';
+    }
+
+    function isNumeric2(n) {
+        for (let i = 0; i < n.length; i++) {
+            if (isNaN(n[i]) || n[i]==' ') {
+                return false;
+            }
         }
         return true;
     }
@@ -122,7 +154,7 @@ function floorPrice(idx) {
     house_square_meter.addEventListener('keyup', getPrice);
     function getPrice() {
 
-        houseSquareMeter = house_square_meter.value;
+        houseSquareMeter = house_square_meter.value.trim();
         errorMsg1 = checkNumber(houseSquareMeter, 80);
         if (errorMsg1=='') {
             houseSquarePrice();
@@ -287,8 +319,8 @@ function floorPrice(idx) {
     wind.addEventListener('keyup', windowPrice);
 
     function windowPrice() {
-        const val = wind.value;
-        errorMsg2 = checkNumber(val, 1);
+        const val = wind.value.trim();
+        errorMsg2 = checkNumber2(val, 1);
         if (errorMsg2=='') {
             finalPrice.windowCount = val*8000;
             error2 = false;
@@ -398,8 +430,8 @@ function floorPrice(idx) {
     terrace1.addEventListener('keyup', terracePrice);
 
     function terracePrice(){
-        const val = terrace1.value;
-        errorMsg3 = checkNumber(val, 1);
+        const val = terrace1.value.trim();
+        errorMsg3 = checkNumber(val, 0.1);
         if (errorMsg3=='') {
             finalPrice.terrace = val*3000;
             error3 = false;
@@ -492,7 +524,7 @@ function floorPrice(idx) {
                 sum+= finalPrice[key];
             }
             finalSum=sum;
-            result.innerHTML = sum + ' ₽';
+            result.innerHTML = Math.floor(sum) + ' ₽';
         }
         else {
             result.innerHTML = 'Ошибка!!';
