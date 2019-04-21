@@ -334,15 +334,15 @@
                                     </label>
                                 </div>
                                 <div class="radio-block">
-                                        <input type="radio" name="roof3" class="roof-3" id="roof-3_2" />
-                                        <label for="roof-3_2">
-                                            <span class="check-img">
-                                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg"
-                                                    alt="Checked Icon" />
-                                            </span>
-                                            Полноценный второй этаж 2,5 метра
-                                        </label>
-                                    </div>
+                                    <input type="radio" name="roof3" class="roof-3" id="roof-3_2" />
+                                    <label for="roof-3_2">
+                                        <span class="check-img">
+                                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg"
+                                                alt="Checked Icon" />
+                                        </span>
+                                        Полноценный второй этаж 2,5 метра
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
@@ -475,7 +475,7 @@
                         <h3 class="item-title">Межэтажное перекрытие</h3>
                         <div class="floor-type-inner">
                             <div class="radio-block">
-                                <input type="radio" name="perkr" class="frame-beams-1" id="frame-beams-1" checked/>
+                                <input type="radio" name="perkr" class="frame-beams-1" id="frame-beams-1" checked />
                                 <label for="frame-beams-1">
                                     <span class="check-img">
                                         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg"
@@ -532,7 +532,9 @@
                 </div>
 
             </div>
+            <div class="btn-block">
                 <button id="sale">5% скидки по промокоду</button>
+            </div>
         </div>
 
     </div>

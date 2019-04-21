@@ -180,6 +180,12 @@ input[type="checkbox"]:checked ~label .check-img img{
   font-size: 22px;
 }
 /*Button style*/
+.btn-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #sale {
 	-moz-box-shadow: 3px 4px 0px 0px #fff6af;
 	-webkit-box-shadow: 3px 4px 0px 0px #fff6af;
