@@ -83,9 +83,11 @@
                             </div>
                         </div>
 
+                        <div class="bottom-border hidden-border"></div>
+
                         <div class="radio-block-item">
-                            <h3 class="item-title">Крыша - Металлочерепица GrandLine</h3>
-                            <h4 class="item-title">Толщина стали 0,5мм, цвет на выбор</h4>
+                            <h3 class="item-title sm-item-title">Крыша - Металлочерепица GrandLine</h3>
+                            <h4 class="item-title sm-item-title2">Толщина стали 0,5мм, цвет на выбор</h4>
                             <div>
                                 <div class="radio-block">
                                     <input type="radio" name="roof1" class="roof-1" id="roof-1_1" checked />
@@ -141,6 +143,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="bottom-border hidden-border"></div>
 
                         <div class="radio-block-item">
                             <h3 class="item-title">Внутренние перегородки дома из сип панели</h3>
@@ -309,9 +313,11 @@
                             </div>
                         </div>
 
+                        <div class="bottom-border hidden-border"></div>
+
                         <div class="radio-block-item">
-                            <h3 class="item-title">Крыша - Металлочерепица GrandLine</h3>
-                            <h4 class="item-title">Толщина стали 0,5мм, цвет на выбор</h4>
+                            <h3 class="item-title sm-item-title">Крыша - Металлочерепица GrandLine</h3>
+                            <h4 class="item-title sm-item-title2">Толщина стали 0,5мм, цвет на выбор</h4>
                             <div>
                                 <div class="radio-block">
                                     <input type="radio" name="roof2" class="roof-1" id="roof-1_2" checked />
@@ -377,6 +383,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="bottom-border hidden-border"></div>
 
                         <div class="radio-block-item">
                             <h3 class="item-title">Внутренние перегородки дома из сип панели</h3>
