@@ -1,6 +1,7 @@
 .calc-container {
   padding: 30px;
   font-family: 'Roboto', sans-serif;
+  
 }
 
 .calc-block {
@@ -160,13 +161,13 @@
 }
 
 .display > p {
-  color: #fff200;
+  color:#fff;
   font-size: 24px;
 }
 
 .result {
   font-weight: bold;
-  color: black;
+  color: #f1c40f;
 }
 
 /* ---------------------------- */
